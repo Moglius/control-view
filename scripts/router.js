@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('Control',['ngResource','ngRoute'])
-    .config(function($routeProvider){
+angular.module('Control', ['ngResource', 'ngRoute'])
+    .config(function ($routeProvider) {
         $routeProvider
-        .when('/',{
+        .when('/', {
             templateUrl: 'views/index.html',
-            controller: 'IndexDashCtrl',
+            controller: 'IndexDashCtrl'
         })
         .when('/users/new',{
             templateUrl: 'views/create.html',
-            controller: 'CreateUserCtrl',
+            controller: 'CreateUserCtrl'
         })
         .otherwise({
             redirectTo: '/'
