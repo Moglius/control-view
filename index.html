@@ -20,6 +20,8 @@
     <!-- Custom CSS -->
     <link href="assets/dist/css/sb-admin-2.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="assets/bower_components/ngToast/dist/ngToast.min.css">
+
     <!-- Custom Fonts -->
     <link href="assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -33,6 +35,8 @@
 </head>
 
 <body ng-app="Control">
+
+    <toast></toast>
 
     <div ng-view></div>
 
@@ -52,6 +56,7 @@
     <script src="components/angular.min.js"></script>
     <script src="components/angular-resource.min.js"></script>
     <script src="components/angular-route.min.js"></script>
+    <script src="components/angular-sanitize.min.js"></script>
 
     <!-- AngularJS Router -->
     <script src="scripts/router.js"></script>
@@ -61,6 +66,9 @@
 
     <!-- AngularJS Services -->
     <script src="scripts/services/UserService.js"></script>
+
+    <!-- AngularJS Services -->
+    <script src="assets/bower_components/ngToast/dist/ngToast.min.js"></script>
 
 </body>
 

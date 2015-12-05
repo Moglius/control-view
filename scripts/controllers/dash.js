@@ -2,13 +2,15 @@
 
 angular.module('Control')
     .controller('IndexDashCtrl',function(){})
-    .controller('CreateUserCtrl',function($scope, UserResource){
+    .controller('CreateUserCtrl',function($scope, $route, UserResource, ngToast){
         $scope.title ="Crear Usuario";
         $scope.button ="Crear";
         $scope.User ={};
         $scope.saveUser = function (){
             //console.log($scope.User);
             UserResource.save($scope.User);
+            ngToast.create('Usuario Guardado');
+            $route.reload();
         }
     })
     .controller('validateForm', function($scope) {
