@@ -8,7 +8,7 @@ angular.module('Control', ['ngResource', 'ngRoute', 'ngToast'])
             controller: 'IndexDashCtrl'
         })
         .when('/users/new',{
-            templateUrl: 'views/create.html',
+            templateUrl: 'views/users/create.html',
             controller: 'CreateUserCtrl'
         })
         .otherwise({
