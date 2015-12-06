@@ -10,7 +10,7 @@ angular.module('Control')
             //console.log($scope.User);
             $scope.msj = UserResource.save($scope.User);
             //ngToast.create('Usuario Guardado');
-            console.log($scope.msj);
+            //console.log($scope.msj);
             $route.reload();
         }
     })
