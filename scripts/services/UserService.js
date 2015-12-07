@@ -2,8 +2,13 @@
 
 angular.module('Control')
     .factory('UserResource',function($resource){
-        return $resource("http://control.app/usersAPI/:id",{id: "@id"});
+        return $resource("http://control.app/usersApi/:id",{id: "@id"},
+                         {update:
+                            {method: "PUT"}
+                });
+        //return $resource("http://control.app/usersApi/:id",{id: "@id"});
     })
+
     .factory('Password', function() {
 
 		function getStrength(pass) {
