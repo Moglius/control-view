@@ -5,7 +5,7 @@
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-10">
+                    <div class="col-lg-12">
                         <div class="row">
                             <div class="col-lg-6">
                                 <h1 class="page-header"><strong>{{title}}</strong></h1>
@@ -17,6 +17,7 @@
                         <div class="card-panel">
                             <div  ng-repeat="err in value">
                             <div class="alert alert-danger alert-dismissible" role="alert" >
+                                <i class="fa fa-exclamation-triangle"></i>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 <strong>{{err[0]}}</strong>
                             </div>
