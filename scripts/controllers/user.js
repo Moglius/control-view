@@ -37,7 +37,8 @@ angular.module('Control')
         }
 
 
-        UserResourceSec.get(function(data){
+        function createTable(){
+            UserResourceSec.get(function(data){
             $scope.users = data.users;
             $scope.usersSec = data.users;
             $scope.tableHeaders = ['ID','Name', 'Email', 'Role'];
@@ -55,6 +56,9 @@ angular.module('Control')
                 $scope.error = error;
              }
         )
+        }
+
+        createTable();
 
                 $scope.removeUser = function(id){
                     var delUser = $scope.users[id];
@@ -65,7 +69,10 @@ angular.module('Control')
                 function( value ){/*Do something with value*/
                         if (value.deleted == "OK"){
                         ngToast.create("<strong>" + "El usuario ha sido Eliminado." + "</strong>");
-                        $route.reload();
+
+                        $("#"+id).remove();
+                         createTable();
+                        //$route.reload();
                     }else{
                         $scope.value = value;
                     }
