@@ -21,7 +21,7 @@ angular.module('Control')
         }
       )
     })
-    .controller('Index2UserCtrl',function($scope, $route, UserResource, ngToast, NgTableParams){
+    .controller('Index2UserCtrl',function($scope, $route, UserResource, UserResourceSec, ngToast, NgTableParams){
         $scope.title ="Usuarios";
 
         var self = this;
@@ -37,7 +37,7 @@ angular.module('Control')
         }
 
 
-        UserResource.get(function(data){
+        UserResourceSec.get(function(data){
             $scope.users = data.users;
             self.tableParams = new NgTableParams({ count: 10}, { counts: [5, 10, 25], dataset: data.users});
 
@@ -45,13 +45,38 @@ angular.module('Control')
         //success
         function( value ){/*Do something with value*/
              //ngToast.create(value);
+              //$scope.getArray = value.users;
         },
         //error
-        function( error ){/*Do something with error*/
-            ngToast.create(error);
-            $scope.error = error;
-        }
-      )
+            function( error ){/*Do something with error*/
+                ngToast.create(error);
+                $scope.error = error;
+             }
+        )
+
+
+
+        UserResourceSec.get(function(data){
+            $scope.usersSec = data.users;
+            $scope.tableHeaders = ['ID','Name', 'Email', 'Role'];
+            //self.tableParams = new NgTableParams({ count: 10}, { counts: [5, 10, 25], dataset: data.users});
+
+        }).$promise.then(
+        //success
+        function( value ){/*Do something with value*/
+             //ngToast.create(value);
+              //$scope.getArray = value.users;
+        },
+        //error
+            function( error ){/*Do something with error*/
+                ngToast.create(error);
+                $scope.error = error;
+             }
+        )
+
+
+
+
     })
     .controller('CreateUserCtrl',function($scope, $route, $location, $timeout, UserResource, ngToast){
         $scope.title ="Crear Usuario";

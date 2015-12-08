@@ -9,6 +9,11 @@ angular.module('Control')
         //return $resource("http://control.app/usersApi/:id",{id: "@id"});
     })
 
+    .factory('UserResourceSec',function($resource){
+        return $resource("http://control.app/users/indexSec/:id",{id: "@id"});
+        //return $resource("http://control.app/usersApi/:id",{id: "@id"});
+    })
+
     .factory('Password', function() {
 
 		function getStrength(pass) {

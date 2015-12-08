@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('Control', ['ngResource', 'ngRoute', 'ngToast', 'ngTable', 'ngSocial', 'embedCodepen', 'ngSanitize'])
+angular.module('Control', ['ngResource', 'ngRoute', 'ngToast', 'ngTable', 'ngSocial', 'embedCodepen', 'ngSanitize', 'ngCsv'])
     .config(function ($routeProvider) {
         $routeProvider
         .when('/', {

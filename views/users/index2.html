@@ -16,13 +16,14 @@
                                 <a class="pull-right page-header two-botton no-border" href="#/users/index2"><button class="btn btn-success btn-lg btn-circle" ng-disabled="!vm.tableParams.hasFilter()" ng-click="vm.tableParams.filter({})" data-toggle="tooltip" data-placement="top" title="Eliminar Filtro"><i class="fa fa-minus-circle"></i></button></a>
 
 
-
                             </div>
                         </div>
 
-                          <div class="col-xs-12">
+                          <div class="col-xs-10">
                                  <form name="vm.searchForm" novalidate ng-submit="vm.applyGlobalSearch()">
+
                                     <div class="input-group">
+
                                       <span class="input-group-addon">Except for...
                                         <input type="checkbox" name="inverted" ng-model="vm.isInvertedSearch" />
                                       </span>
@@ -34,6 +35,16 @@
                                       </span>
                                     </div>
                                   </form>
+                        </div>
+
+                        <div class="btn-group pull-right">
+                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="" class="" data-toggle="tooltip" data-placement="top" title="Export CSV" type="button" ng-csv="usersSec" csv-header="tableHeaders" filename="test.csv"><i class="fa fa-file-excel-o"></i>    Export CSV</a></li>
+
+                          </ul>
                         </div>
 
 
@@ -49,8 +60,8 @@
                                     <td title="'Email'" filter="{ email: 'text'}" sortable="'email'">
                                         {{user.email}}
                                     </td>
-                                    <td title="'Role'" sortable="'role'">
-                                        {{user.role.name}}
+                                    <td title="'Role'" filter="{ role_name: 'text'}" sortable="'role'">
+                                        {{user.role_name}}
                                     </td>
 
                                      <td>
@@ -62,6 +73,8 @@
 
 
                                 </tr>
+
+                                <!-- Single button -->
 
                         </table>
 
