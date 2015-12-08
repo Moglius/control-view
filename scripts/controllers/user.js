@@ -39,6 +39,9 @@ angular.module('Control')
 
         UserResourceSec.get(function(data){
             $scope.users = data.users;
+            $scope.usersSec = data.users;
+            $scope.tableHeaders = ['ID','Name', 'Email', 'Role'];
+
             self.tableParams = new NgTableParams({ count: 10}, { counts: [5, 10, 25], dataset: data.users});
 
         }).$promise.then(
@@ -53,29 +56,6 @@ angular.module('Control')
                 $scope.error = error;
              }
         )
-
-
-
-        UserResourceSec.get(function(data){
-            $scope.usersSec = data.users;
-            $scope.tableHeaders = ['ID','Name', 'Email', 'Role'];
-            //self.tableParams = new NgTableParams({ count: 10}, { counts: [5, 10, 25], dataset: data.users});
-
-        }).$promise.then(
-        //success
-        function( value ){/*Do something with value*/
-             //ngToast.create(value);
-              //$scope.getArray = value.users;
-        },
-        //error
-            function( error ){/*Do something with error*/
-                ngToast.create(error);
-                $scope.error = error;
-             }
-        )
-
-
-
 
     })
     .controller('CreateUserCtrl',function($scope, $route, $location, $timeout, UserResource, ngToast){
