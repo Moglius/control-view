@@ -43,7 +43,7 @@ angular.module('Control')
             $scope.tableHeaders = ['ID','Name', 'Email', 'Role'];
 
             //test change data.users por $scope.users
-            self.tableParams = new NgTableParams({ count: 10}, { counts: [5, 10, 25], dataset: $scope.users});
+            self.tableParams = new NgTableParams({ count: 10}, { counts: [5, 10, 25], dataset: data.users});
 
         }).$promise.then(
         //success
@@ -65,10 +65,7 @@ angular.module('Control')
                 function( value ){/*Do something with value*/
                         if (value.deleted == "OK"){
                         ngToast.create("<strong>" + "El usuario ha sido Eliminado." + "</strong>");
-                        $scope.users.splice(id,1);
-                         $('#' + id).remove();
-
-
+                        $route.reload();
                     }else{
                         $scope.value = value;
                     }

@@ -53,7 +53,7 @@
                         <div class="card-panel">
                         <table ng-table="vm.tableParams" class="table" show-filter="true">
 
-                                <tr ng-repeat="user in users" id="{{user.id}}">
+                                <tr ng-repeat="user in $data" id="{{user.id}}">
                                     <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
                                         {{user.name}}
                                     </td>
