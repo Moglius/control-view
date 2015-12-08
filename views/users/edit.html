@@ -1,6 +1,5 @@
 <div id="wrapper">
 
-
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
@@ -10,11 +9,13 @@
                             <div class="col-lg-6">
                                 <h1 class="page-header">{{title}}</h1>
                             </div>
+
                             <div class="col-lg-6">
                                 <a class="pull-right page-header no-border" href="#/users"><button class="btn btn-success btn-lg btn-circle" data-toggle="tooltip" data-placement="top" title="Lista Usuarios"><i class="fa fa-users"></i></button></a>
                                  <a class="pull-right page-header two-botton no-border" href="#/users/new"><button class="btn btn-success btn-lg btn-circle" data-toggle="tooltip" data-placement="top" title="Agregar Usuario"><i class="fa fa-user-plus"></i></button></a>
                             </div>
                         </div>
+                        <div ng-include="'views/template/errors.html'"></div>
                         <div class="card-panel">
                             <form ng-submit="saveUser()" name="userForm">
 
@@ -50,6 +51,8 @@
 
                             </form>
                         </div>
+                        <tt>error: {{error}}</tt><br>
+                        <tt>value: {{value}}</tt><br>
 
                     </div>
                     <!-- /.col-lg-12 -->

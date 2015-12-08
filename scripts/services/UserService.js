@@ -6,12 +6,9 @@ angular.module('Control')
                          {update:
                             {method: "PUT"}
                 });
-        //return $resource("http://control.app/usersApi/:id",{id: "@id"});
     })
-
     .factory('UserResourceSec',function($resource){
         return $resource("http://control.app/users/indexSec/:id",{id: "@id"});
-        //return $resource("http://control.app/usersApi/:id",{id: "@id"});
     })
 
     .factory('Password', function() {

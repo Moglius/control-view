@@ -90,19 +90,41 @@ angular.module('Control')
                     },1000);*/
         }
     })
-    .controller('EditUserCtrl',function($scope, $route, $routeParams, UserResource, ngToast){
+    .controller('EditUserCtrl',function($scope, $route, $routeParams, UserResource, $location, $timeout, ngToast){
         $scope.title ="Editar Usuario";
         $scope.button ="Editar";
         $scope.User =UserResource.get({
             id: $routeParams.id
         });
 
+        //console.log($scope.User);
+
         $scope.saveUser = function (){
-            console.log($scope.User);
             //UserResource.update($scope.User);
-            ngToast.create('Usuario Editado');
-            //console.log($scope.msj);
-            $route.reload();
+            //ngToast.create('Usuario Editado');
+
+            UserResource.update($scope.User).$promise.then(
+                //success
+                function( value ){/*Do something with value*/
+
+                    if (value.created == "OK"){
+                        ngToast.create("<strong>" + "El usuario ha sido Editado." + "</strong>");            $timeout(function(){
+                            $location.path('/users');
+                        },1000);
+
+                    }else{
+                        $scope.value = value;
+                    }
+
+                },
+                //error
+                function( error ){/*Do something with error*/
+
+                    //console.log(error);
+                    $scope.error = error;
+                }
+              )
+
         }
 
     })
