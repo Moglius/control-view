@@ -12,6 +12,10 @@ body {
     width: 100%;
 }
 
+.alert {
+    margin-bottom: 10px;
+}
+
 #page-wrapper {
     padding: 0 15px;
     min-height: 568px;
@@ -29,6 +33,15 @@ body {
 
 .navbar-top-links {
     margin-right: 0;
+}
+
+.two-botton{
+    padding-right: 2%;
+    border-bottom: none;
+}
+
+.no-border{
+    border-bottom: none;
 }
 
 .navbar-top-links li {
@@ -174,6 +187,12 @@ body {
 .btn-warning.btn-outline:hover,
 .btn-danger.btn-outline:hover {
     color: #fff;
+}
+
+.btn-circle {
+    border-radius: 50%;
+    padding: 0.1em;
+    width:1.8em;
 }
 
 .chat {

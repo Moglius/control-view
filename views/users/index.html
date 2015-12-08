@@ -1,0 +1,57 @@
+<div id="wrapper">
+
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-10">
+                         <div class="row">
+                            <div class="col-lg-6">
+                                <h1 class="page-header">{{title}}</h1>
+                            </div>
+                            <div class="col-lg-6">
+                                <a class="pull-right page-header no-border" href="#/users/new"><button class="btn btn-success btn-lg btn-circle"><i class="fa fa-user-plus"></i></button></a>
+                            </div>
+                        </div>
+                        <div class="card-panel">
+                        <table ng-table="vm.tableParams" class="table" show-filter="true">
+                                <tr ng-repeat="user in $data">
+                                    <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
+                                        {{user.name}}
+                                    </td>
+                                    <td title="'Email'" sortable="'email'">
+                                        {{user.email}}
+                                    </td>
+                                    <td title="'Role'" sortable="'role'">
+                                        {{user.role.name}}
+                                    </td>
+
+
+                                    <td title="'Actions'">
+                                        <button class="btn btn-primary btn-sm" ng-click="demo.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid"></button>
+                                        <button class="btn btn-default btn-sm" ng-click="demo.cancel(row, rowForm)" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+                                        <a href="#/users/edit/{{user.id}}"><button class="btn btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing"><span class="glyphicon glyphicon-pencil"></span></button></a>
+                                        <button class="btn btn-danger btn-sm" ng-click="demo.del(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash"></span></button>
+
+                                    </td>
+
+                                </tr>
+
+                        </table>
+
+                        </div>
+
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+

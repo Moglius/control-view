@@ -8,36 +8,33 @@
                     <div class="col-lg-10">
                         <div class="row">
                             <div class="col-lg-6">
-                                <h1 class="page-header"><strong>{{title}}</strong></h1>
+                                <h1 class="page-header">{{title}}</h1>
                             </div>
                             <div class="col-lg-6">
-                                <a class="pull-right page-header no-border" href="#/users"><button class="btn btn-success btn-lg btn-circle"><i class="fa fa-users"></i></button></a>
+                                <a class="pull-right page-header no-border" href="#/users"><button class="btn btn-success btn-lg btn-circle" data-toggle="tooltip" data-placement="top" title="Lista Usuarios"><i class="fa fa-users"></i></button></a>
+                                 <a class="pull-right page-header two-botton no-border" href="#/users/new"><button class="btn btn-success btn-lg btn-circle" data-toggle="tooltip" data-placement="top" title="Agregar Usuario"><i class="fa fa-user-plus"></i></button></a>
                             </div>
                         </div>
                         <div class="card-panel">
-                            <div  ng-repeat="err in value">
-                            <div class="alert alert-danger alert-dismissible" role="alert" >
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <strong>{{err[0]}}</strong>
-                            </div>
-                            </div>
                             <form ng-submit="saveUser()" name="userForm">
 
                                  <!-- NAME -->
                                  <div class="input-field form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine, 'has-success': userForm.name.$valid }">
                                     <label>Name</label>
-                                    <input type="text" name="name" class="form-control" ng-model="User.name"  placeholder="foo.bar" ng-pattern="/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/" required>
+                                    <input type="text" name="name" class="form-control" ng-model="User.name"  placeholder="foo.bar" ng-pattern="/^^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/" required disabled>
                                     <p ng-show="userForm.name.$error.required && !userForm.name.$pristine" class="help-block">You name is required.</p>
-                                     <p ng-show="userForm.name.$error.pattern && !userForm.name.$pristine" class="help-block">Only Names Accepted</p>
+                                     <p ng-show="userForm.name.$error.pattern && !userForm.name.$pristine" class="help-block">Name Error (A-Z a-z 0-9 . _ -)</p>
+
+
+
                                 </div>
 
                                 <!-- EMAIL -->
                                 <div class="input-field form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine, 'has-success': userForm.email.$valid}">
                                     <label>Email</label>
-                                    <input type="email" name="email" class="form-control" ng-model="User.email" placeholder="foo@example.com.ar" required>
+                                    <input type="email" name="email" class="form-control" ng-model="User.email" placeholder="foo@example.com.ar" required disabled>
                                     <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
                                 </div>
-
 
                                 <div class="form-group"
                                     ng-class="{'has-error': isInputInvalid(userForm.password), 'has-success': isInputValid(userForm.password)}"
@@ -71,18 +68,21 @@
                                 </div>
 
 
-                                <div class="input-field form-group">
-                                    <label>User Role</label>
-                                    <input type="text" ng-model="User.id_role" placeholder="id Role" class="form-control" required>
 
+
+
+                                <div class="input-field form-group">
+                                    <input type="text" ng-model="User.id_role" placeholder="id Role" class="form-control" required disabled>
                                 </div>
 
-                                <button class="btn btn-primary" type="submit" ng-disabled="userForm.$invalid">
+
+
+                                <button class="btn btn-primary" type="submit" ng-disabled="userForm.$invalid || !userForm.$dirty">
                                     {{button}}
                                 </button>
+                                <br>
+
                             </form>
-                            <tt>{{error}}</tt><br>
-                            <tt>{{value}}</tt><br>
                         </div>
 
                     </div>
