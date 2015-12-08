@@ -53,7 +53,7 @@
                         <div class="card-panel">
                         <table ng-table="vm.tableParams" class="table" show-filter="true">
 
-                                <tr ng-repeat="user in $data">
+                                <tr ng-repeat="user in users" id="{{user.id}}">
                                     <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
                                         {{user.name}}
                                     </td>
@@ -69,7 +69,7 @@
 
                                          <a href="#/users/editPass/{{user.id}}"><button class="btn btn-primary btn-sm" ng-click="demo.del(row)" ng-if="!row.isEditing" data-toggle="tooltip" data-placement="top" title="Cambiar Password"><i class="fa fa-key"></i></button></a>
 
-                                        <button class="btn btn-danger btn-sm" ng-click="demo.del(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-placement="top" title="Eliminar"></span></button>
+                                         <a href="" ng-click="removeUser(user.id, $index)"><button class="btn btn-danger btn-sm" ng-click="demo.del(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-placement="top" title="Eliminar"></span></button></a>
 
 
                                 </tr>

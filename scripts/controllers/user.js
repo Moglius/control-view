@@ -21,7 +21,7 @@ angular.module('Control')
         }
       )
     })
-    .controller('Index2UserCtrl',function($scope, $route, UserResource, UserResourceSec, ngToast, NgTableParams){
+    .controller('Index2UserCtrl',function($scope, $route, UserResource, UserResourceSec, $location, $timeout, ngToast, NgTableParams){
         $scope.title ="Usuarios";
 
         var self = this;
@@ -42,13 +42,12 @@ angular.module('Control')
             $scope.usersSec = data.users;
             $scope.tableHeaders = ['ID','Name', 'Email', 'Role'];
 
-            self.tableParams = new NgTableParams({ count: 10}, { counts: [5, 10, 25], dataset: data.users});
+            //test change data.users por $scope.users
+            self.tableParams = new NgTableParams({ count: 10}, { counts: [5, 10, 25], dataset: $scope.users});
 
         }).$promise.then(
         //success
         function( value ){/*Do something with value*/
-             //ngToast.create(value);
-              //$scope.getArray = value.users;
         },
         //error
             function( error ){/*Do something with error*/
@@ -56,6 +55,38 @@ angular.module('Control')
                 $scope.error = error;
              }
         )
+
+                $scope.removeUser = function(id){
+                    var delUser = $scope.users[id];
+                    UserResource.delete({
+                    id: id
+                }).$promise.then(
+                //success
+                function( value ){/*Do something with value*/
+                        if (value.deleted == "OK"){
+                        ngToast.create("<strong>" + "El usuario ha sido Eliminado." + "</strong>");
+                        $scope.users.splice(id,1);
+                         $('#' + id).remove();
+
+
+                    }else{
+                        $scope.value = value;
+                    }
+                },
+                //error
+                    function( error ){/*Do something with error*/
+
+                        ngToast.create({
+                          className: 'danger',
+                          content: "<strong>Error de la APP.</strong>"
+                        });
+
+                        $scope.error = error;
+                     }
+                )
+        };
+
+
 
     })
     .controller('CreateUserCtrl',function($scope, $route, $location, $timeout, UserResource, ngToast){
@@ -81,13 +112,9 @@ angular.module('Control')
                 //error
                 function( error ){/*Do something with error*/
 
-                    //console.log(error);
                     $scope.error = error;
                 }
               )
-             /*$timeout(function(){
-                        $location.path('/users');
-                    },1000);*/
         }
     })
     .controller('EditUserCtrl',function($scope, $route, $routeParams, UserResource, $location, $timeout, ngToast){
@@ -97,11 +124,7 @@ angular.module('Control')
             id: $routeParams.id
         });
 
-        //console.log($scope.User);
-
         $scope.saveUser = function (){
-            //UserResource.update($scope.User);
-            //ngToast.create('Usuario Editado');
 
             UserResource.update($scope.User).$promise.then(
                 //success
@@ -119,8 +142,6 @@ angular.module('Control')
                 },
                 //error
                 function( error ){/*Do something with error*/
-
-                    //console.log(error);
                     $scope.error = error;
                 }
               )
