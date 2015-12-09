@@ -31,6 +31,11 @@ angular.module('Control', ['ngResource', 'ngRoute', 'ngToast', 'ngTable', 'ngSoc
             controller: 'Index2UserCtrl',
             controllerAs: 'vm'
         })
+         .when('/roles',{
+            templateUrl: 'views/roles/index.html',
+            controller: 'IndexRoleCtrl',
+            controllerAs: 'vm'
+        })
         .otherwise({
             redirectTo: '/'
         });
