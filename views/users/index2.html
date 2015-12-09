@@ -2,14 +2,22 @@
 
 
         <!-- Page Content -->
-        <div id="page-wrapper">
+        <div class="pading-left-right panel panel-primary">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
                          <div class="row">
                             <div class="col-lg-8">
-                                <h1 class="page-header">{{title}}</h1>
+                                <h1 class="page-header"><strong>{{title}}</strong></h1>
                             </div>
+
+                            <div class="col-lg-6">
+                                     <ol class="breadcrumb pull-left page-header no-border">
+                                      <li><a href="#/">Home</a></li>
+                                      <li class="active">{{title}}</li>
+                                    </ol>
+                             </div>
+
                             <div class="col-lg-4">
                                 <a class="pull-right page-header no-border" href="#/users/new"><button class="btn btn-success btn-lg btn-circle" data-toggle="tooltip" data-placement="top" title="Agregar Usuario"><i class="fa fa-user-plus"></i></button></a>
 
@@ -76,7 +84,6 @@
                         </table>
 
                         </div>
-
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>

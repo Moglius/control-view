@@ -12,8 +12,33 @@ body {
     width: 100%;
 }
 
+.navbar {
+     margin-bottom: 0px;
+}
+
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: white !important;
+    border-radius: 4px;
+}
+
+.page-header {
+    padding-bottom: 9px;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+    padding-top: 9px;
+}
+
 .alert {
     margin-bottom: 10px;
+}
+
+.pading-left-right{
+    padding-left: 5%;
+    padding-right: 5%;
+    min-height: 600px;
 }
 
 #page-wrapper {

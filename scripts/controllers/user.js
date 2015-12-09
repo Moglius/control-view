@@ -23,6 +23,7 @@ angular.module('Control')
     })
     .controller('Index2UserCtrl',function($scope, $route, UserResource, UserResourceSec, $location, $timeout, ngToast, NgTableParams){
         $scope.title ="Usuarios";
+        $scope.location = $location.path();
 
         var self = this;
         self.applyGlobalSearch = applyGlobalSearch;
@@ -97,6 +98,7 @@ angular.module('Control')
         $scope.title ="Crear Usuario";
         $scope.button ="Crear";
         $scope.User ={};
+        $scope.location = $location.path();
         $scope.saveUser = function (){
 
             UserResource.save($scope.User).$promise.then(
