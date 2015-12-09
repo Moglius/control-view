@@ -31,8 +31,10 @@
 
                                         <tr ng-repeat="role in $data" id="{{role.id}}">
                                             <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
+                                               <span class="label label-pill label-primary pull-right">24</span>
                                                 {{role.name}}
                                             </td>
+
                                              <td>
                                                 <a href="#/roles/edit/{{role.id}}"><button class="btn btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing" data-toggle="tooltip" data-placement="top" title="Editar"><span class="glyphicon glyphicon-pencil"></span></button></a>
 

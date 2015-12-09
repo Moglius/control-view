@@ -40,7 +40,7 @@ angular.module('Control')
 
         function createTable(){
             UserResourceSec.get(function(data){
-            $scope.users = data.users;
+            $scope.users = data.    users;
             $scope.usersSec = data.users;
             $scope.tableHeaders = ['ID','Name', 'Email', 'Role'];
 
@@ -72,7 +72,23 @@ angular.module('Control')
                         ngToast.create("<strong>" + "El usuario ha sido Eliminado." + "</strong>");
 
                         $("#"+id).remove();
-                         createTable();
+
+                        //MDM
+                        function findAndRemove(array, property, value) {
+                          array.forEach(function(result, index) {
+                            if(result[property] === value) {
+                              //Remove from array
+                              array.splice(index, 1);
+                            }
+                          });
+                        }
+
+                        //Checks countries.result for an object with a property of 'id' whose value is 'AF'
+                        //Then removes it ;p
+                        findAndRemove($scope.users, 'id', id);
+
+                         //createTable();
+                        self.tableParams = new NgTableParams({ count: 10}, { counts: [5, 10, 25], dataset: $scope.users});
                         //$route.reload();
                     }else{
                         $scope.value = value;
