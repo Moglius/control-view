@@ -45,7 +45,7 @@ angular.module('Control')
             $scope.tableHeaders = ['ID','Name', 'Email', 'Role'];
 
             //test change data.users por $scope.users
-            self.tableParams = new NgTableParams({ count: 10}, { counts: [5, 10, 25], dataset: data.users});
+            self.tableParams = new NgTableParams({ count: 5}, { counts: [5, 10, 25], dataset: data.users});
 
         }).$promise.then(
         //success
@@ -88,7 +88,7 @@ angular.module('Control')
                         findAndRemove($scope.users, 'id', id);
 
                          //createTable();
-                        self.tableParams = new NgTableParams({ count: 10}, { counts: [5, 10, 25], dataset: $scope.users});
+                        self.tableParams = new NgTableParams({ count: 5}, { counts: [5, 10, 25], dataset: $scope.users});
                         //$route.reload();
                     }else{
                         $scope.value = value;
